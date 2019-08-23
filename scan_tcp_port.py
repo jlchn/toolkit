@@ -13,8 +13,9 @@ print 'start scan open ports on:', ip_to_scan
 start_time = time.time()
 
 try:
-    for port in range(1, 1025):
+    for port in range(1, 10000):
       sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+      sock.settimeout(3)
       result = sock.connect_ex((ip_to_scan, port))
       if result == 0:
         print("Opening Port: {}".format(port))
