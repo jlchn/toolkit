@@ -18,13 +18,16 @@ try:
       sock.settimeout(3)
       result = sock.connect_ex((ip_to_scan, port))
       if result == 0:
-        print("Opening Port: {}".format(port))
+        print "Opening Port: {}".format(port)
+        sock.send('who are you?')
+        result = sock.recv(100)
+        print "Message from server: {}".format(str(result))
       sock.close()
 
 except KeyboardInterrupt:
     sys.exit()
 except socket.error:
-    print("Cannot connect to server")
+    print "Cannot connect to server"
     sys.exit()
 
 end_time = time.time()
