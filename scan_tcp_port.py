@@ -8,7 +8,7 @@ import time
 subprocess.call('clear', shell=True)
 
 ip_to_scan = raw_input('server ip to scan: ')
-print('start scan open ports on:', ip_to_scan)
+print 'start scan open ports on:', ip_to_scan
 
 start_time = time.time()
 
@@ -27,4 +27,4 @@ except socket.error:
     sys.exit()
 
 end_time = time.time()
-print('Completed in: ', end_time - start_time)
+print 'Completed in: ', end_time - start_time
