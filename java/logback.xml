@@ -1,0 +1,25 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%green(%d)] [%thread] [%highlight(%level)] [%logger{56}] %msg%n</pattern>
+        </encoder>
+    </appender>
+            <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>logs/catalina.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>logs/%d{yyyy-MM-dd}.log</fileNamePattern>
+                    <maxHistory>15</maxHistory>
+                    <totalSizeCap>1GB</totalSizeCap>
+                </rollingPolicy>
+                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                    <maxFileSize>10MB</maxFileSize>
+                </triggeringPolicy>
+                <encoder>
+                    <pattern>[%d] [%thread] [%level] [%logger] %msg%n</pattern>
+                </encoder>
+            </appender>
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ROLLING_FILE" />
+    </root>
+</configuration>
